@@ -1,0 +1,15 @@
+Project: ArcadeVault; Online Game Store
+Name: Sarah Dakakni
+Student Number: 219538974
+
+This assigment is an online game store that has been built with a single page, you are able to access a home page, games, about, wishlist and cart. Once you complete your cart, you are able to do a checkout and review your cart before submitting order and reviewing payment method. 
+
+Running the program: To run the program, you must make sure that index.html is open and it is being ope with Microsoft Edge (can also use VS Code Live Server)
+
+Theme/Style: I wanted to make the theme dark with bright colour. I wanted to be somewhat comfortable on the eyes with the dark background, but also eye catching with the neon and bright colours.
+
+Palette of Colours: Lighter text also neon colour with dark background.
+
+Inspiration: A site that gave me inspiration was <https://ca.shein.com/?onelink=7/4cvg75bfeoxw&requestId=olw-5i53tnha9bg1&network=g&kwd=kwd-1667706624&pf=GOOGLE&keyword=shein&target=&placement=&gad_source=1&gad_campaignid=22138120023&gbraid=0AAAAADm0yO4mNtMPqW4MmRRm32_vGEpZf&gclid=CjwKCAiAh5XNBhAAEiwA_Bu8FQjzDd-3aM9bP7jbIDQfvIMo1SA5mkNTXkIa83ILmkYU6RV8BsKtghoC9_sQAvD_BwE&url_from=cagooglebrandshein_srsa_normal2_onelink01_20250120> the site has similar features that also alighed with what I was looking for 
+
+Implemented features: The homepag has a carousek that shows all different types of games. There is also the promopt of recommended games for the user, there is also a signup new sletter that allows for front end validation. For the gamr section page, there us a filter that allows for narrowing down a search, to help you find the game you are looking for. Game details on the page,they show sample reviews, screenshots of the games, description, ratings, the release date, the platform, and the categry. Going to the cart page will show where you can control the quantity and what you want to add or delete. Tax is also included in the calculations. I wishlist was implemented, allows for games to be saved but not added to a cart. Once customer is ready for checkout, the program will ask for the users card info and email. Once information is filled in, user is able to continue and print out their recipt. 
