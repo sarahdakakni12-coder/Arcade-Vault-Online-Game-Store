@@ -1,0 +1,306 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arcade Vault</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <button class="nav__brand" data-page="home">Arcade Vault</button>
+
+    <nav class="nav__links">
+      <button class="nav__btn" data-page="home">Home</button>
+      <button class="nav__btn" data-page="games">Games</button>
+      <button class="nav__btn" data-page="about">About</button>
+
+      <button class="nav__btn" data-page="wishlist">
+        Wishlist <span class="badge" id="wishlistBadge">0</span>
+      </button>
+
+      <button class="nav__btn" data-page="cart">
+        Cart <span class="badge" id="cartBadge">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- HOME -->
+    <section class="page" id="page-home">
+      <div class="hero">
+        <div class="hero__media">
+          <img id="heroImg" alt="Featured game" />
+          <div class="hero__overlay">
+            <div class="hero__tag">Recommended</div>
+            <h1 id="heroTitle">Featured</h1>
+            <p id="heroDesc" class="muted"></p>
+            <div class="hero__meta" id="heroMeta"></div>
+            <div class="hero__actions">
+              <button class="ghost" id="heroPrev" type="button">Prev</button>
+              <button class="ghost" id="heroNext" type="button">Next</button>
+              <button class="primary" id="heroDetailsBtn" type="button">View Details</button>
+              <button class="primary" id="heroAddCartBtn" type="button">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="sectionTitle">Recommended Games</h2>
+      <p class="muted">Pick any game title and view details or add to Wishlist/Cart.</p>
+      <div id="recommendedList" class="grid"></div>
+
+      <footer class="footerCard">
+        <h3>Newsletter Signup</h3>
+        <p class="muted">Signup for the newest updates, new releases and deals.</p>
+
+        <form id="newsletterForm" novalidate>
+          <div class="formRow">
+            <label class="field">
+              Email
+              <input id="newsletterEmail" type="email" placeholder="name@email.com" />
+            </label>
+            <button class="primary" type="submit">Subscribe</button>
+          </div>
+          <div class="error" id="newsletterError" aria-live="polite"></div>
+          <div class="success" id="newsletterSuccess" aria-live="polite"></div>
+        </form>
+      </footer>
+    </section>
+    <!-- GAMES -->
+    <section class="page hidden" id="page-games">
+      <div class="pageHeader">
+        <h1>Games</h1>
+        <button class="ghost" id="toggleViewBtn" type="button">Toggle Grid/List</button>
+      </div>
+
+      <div class="filters">
+        <label class="field">
+          Search
+          <input id="searchInput" type="text" placeholder="Search by name..." />
+        </label>
+
+        <label class="field">
+          Category
+          <select id="categoryFilter">
+            <option value="all">All</option>
+          </select>
+        </label>
+
+        <label class="field">
+          Platform
+          <select id="platformFilter">
+            <option value="all">All</option>
+          </select>
+        </label>
+
+        <label class="field">
+          Max Price
+          <input id="maxPriceFilter" type="number" min="0" step="1" placeholder="e.g., 50" />
+        </label>
+
+        <label class="field">
+          Sort By
+          <select id="sortSelect">
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="price-asc">Price (Low to High)</option>
+            <option value="price-desc">Price (High to Low)</option>
+            <option value="rating-desc">Rating (High to Low)</option>
+          </select>
+        </label>
+
+        <div class="filters__actions">
+          <button class="primary" id="applyBtn" type="button">Apply</button>
+          <button class="ghost" id="resetBtn" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div id="gamesList" class="grid"></div>
+    </section>
+
+    <!-- DETAIL -->
+    <section class="page hidden" id="page-detail">
+      <div class="pageHeader">
+        <h1 id="detailTitle">Game</h1>
+        <div class="row">
+          <button class="ghost" id="detailBackBtn" type="button">Back</button>
+          <button class="primary" id="detailAddCartBtn" type="button">Add to Cart</button>
+          <button class="ghost" id="detailAddWishBtn" type="button">Add to Wishlist</button>
+        </div>
+      </div>
+
+      <div class="detail">
+           <div class="detail__left">
+          <img id="detailMainImg" class="detail__main" alt="Main game image" />
+
+          <h3 class="subTitle">Thumbnails</h3>
+          <div class="thumbGrid">
+              <img class="thumb t1 " id="thumb1" alt="Thumbnail 1" />
+            <img class="thumb t2" id="thumb2" alt="Thumbnail 2" />
+              <img class="thumb t3" id="thumb3" alt="Thumbnail 3" />
+            <img class="thumb t4" id="thumb4" alt="Thumbnail 4" />
+          </div>
+
+          <h3 class="subTitle">Screenshots</h3>
+          <div class="shotGrid">
+            <img class="shot s1" id="shot1" alt="Screenshot 1" />
+            <img class="shot  s2" id="shot2" alt="Screenshot 2" />
+             <img class="shot s3" id="shot3" alt="Screenshot 3" />
+            <img class="shot s4" id="shot4" alt="Screenshot 4" />
+          </div>
+        </div>
+
+        <div class="detail__right">
+          <div class="cardPad">
+            <h3>Description</h3>
+            <p id="detailDesc" class="muted"></p>
+          </div>
+
+          <div class="cardPad">
+            <h3>Specs</h3>
+            <div class="specs" id="detailSpecs"></div>
+          </div>
+
+          <div class="cardPad">
+            <h3>Sample Reviews</h3>
+            <div id="detailReviews" class="reviews"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CART -->
+    <section class="page hidden" id="page-cart">
+          <div class="pageHeader">
+        <h1>Cart</h1>
+        <button class="primary" id="goCheckoutBtn" type="button">Proceed to Checkout</button>
+      </div>
+
+      <div id="cartList"></div>
+      <div class="totals" id="cartSummary"></div>
+    </section>
+
+   
+
+    <!-- ABOUT -->
+    <section class="page hidden" id="page-about">
+      <h1>About Arcade Vault</h1>
+      <p class="muted">
+        Arcade Vault is an online game store built for an CSS/HTML/JavaScript assignment. View Games, read the details, filter and sort, view details, save items in a wishlist, and complete a checkout
+        flow with a printable receipt.
+      </p>
+
+ <!-- WISHLIST -->
+    <section class="page hidden" id="page-wishlist">
+      <div class="pageHeader">
+        <h1>Wishlist</h1>
+        <button class="ghost" id="wishlistClearBtn" type="button">Clear Wishlist</button>
+      </div>
+      <div id="wishlistList"></div>
+    </section>
+
+
+      <div class="cardPad spacedTop">
+           <h3>Contact Us</h3>
+        <form id="contactForm" novalidate>
+          <div class="formStack">
+            <label class="field">
+              Email
+              <input  id="contactEmail" type="email" placeholder="name@email.com" />
+            </label>
+
+            <label class="field">
+              Message
+              <textarea id="contactMessage"  rows="5" placeholder="Write your message..."></textarea>
+            </label>
+
+            <button class="primary" type="submit">Send</button>
+          </div>
+
+          <div class="error" id="contactError"  aria-live="polite"></div>
+          <div class="success" id="contactSuccess" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- CHECK OUT -->
+    <section class="page hidden" id="page-checkout">
+      <div class="pageHeader">
+        <h1>Checkout</h1>
+        <button class="ghost" id="checkoutBackBtn"  type="button">Back to Cart</button>
+      </div>
+
+      <div class="checkout">
+        <div class="cardPad">
+          <h3>Personal Information</h3>
+           <label class="field">
+            Email
+            <input id="checkoutEmail"  type="email" placeholder="name@email.com" />
+          </label>
+        </div>
+
+           <div class="cardPad">
+          <h3>Payment</h3>
+          <div class="formStack">
+            <label class="field">
+              Name on Card
+              <input id="cardName" type="text" placeholder="Full name" />
+            </label>
+
+            <label class="field">
+              Card Number (16 digits)
+              <input id="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456" />
+            </label>
+
+            <div class="formRow">
+              <label class="field">
+                Expiry (MM/YY)
+                <input id="cardExpiry" placeholder="MM/YY" />
+              </label>
+              <label class="field">
+                CVV (3 or 4 digits)
+                <input id="cardCvv" inputmode="numeric" placeholder="123" />
+              </label>
+            </div>
+
+            <button class="primary" id="payBtn" type="button">Pay Now</button>
+          </div>
+
+          <div class="error" id="CheckoutError" aria-live="polite"></div>
+        </div>
+
+        <div class="cardPad">
+          <h3>Order Summary</h3>
+          <div id="checkoutSummary"></div>
+        </div>
+      </div>
+
+      <div class="overlay hidden" id="processingOverlay" aria-hidden="true">
+        <div class="spinnerCard">
+          <div class="spinner"></div>
+          <div class="spinnerTitle">Processing payment...</div>
+          <div class="muted">This is a front-end simulation.</div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- RECEIPT -->
+    <section class="page hidden" id="page-receipt">
+      <div class="pageHeader noPrint">
+        <h1>Receipt</h1>
+        <div class="row">
+          <button class="ghost" id="continueBtn" type="button">Continue Shopping</button>
+          <button class="primary" id="printBtn" type="button">Print</button>
+        </div>
+      </div>
+
+
+      <div class="receipt" id="receiptBox"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
